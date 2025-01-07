@@ -8,7 +8,7 @@ import streamlit as st
 import altair as alt
 import numpy as np
 
-fps = 48 # ticks per second
+fps = 24 # ticks per second
 velocity = 250 # meters per second
 order_frequency = 10 # How many seconds for new order
 
