@@ -108,7 +108,7 @@ try:
             print (f"Frame rate is too high. Reducing fps to {fps-1}")
             fps -= 1
         else:
-            fps -= 1
+            fps += 1
         new_order_reset = fps * order_frequency
         velocity_per_tick = velocity / fps
         for i in range(len(all_taxis)):
