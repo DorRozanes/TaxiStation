@@ -104,15 +104,15 @@ try:
         # End tick
         new_order_counter += 1
         end_tick = tick.wait_for_tick()
+
+        # Lower frame-rate if needed
         if not end_tick:
             print (f"Frame rate is too high. Reducing fps to {fps-1}")
             fps -= 1
-        else:
-            fps += 1
-        new_order_reset = fps * order_frequency
-        velocity_per_tick = velocity / fps
-        for i in range(len(all_taxis)):
-            all_taxis[i].velocity = velocity_per_tick
+            new_order_reset = fps * order_frequency
+            velocity_per_tick = velocity / fps
+            for i in range(len(all_taxis)):
+                all_taxis[i].velocity = velocity_per_tick
 
 except KeyboardInterrupt:
     print ("Thank you for using Dor's taxi service")
