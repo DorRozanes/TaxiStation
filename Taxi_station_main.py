@@ -28,8 +28,8 @@ def update_plot(taxis, orders, plot_container, color_scale):
 
     data = pd.concat([taxi_df,waiting_df,picked_df])
     chart = alt.Chart(data).mark_point().encode(
-        x='x',
-        y='y',
+        x=alt.X('x', scale=alt.Scale(domain=[0, 20000])),
+        y=alt.Y('y', scale=alt.Scale(domain=[0, 20000])),
         color=color_scale,  # Distinguish the series by color
         tooltip=['x', 'y', 'series']  # Add tooltips for interactivity
     ).properties(
