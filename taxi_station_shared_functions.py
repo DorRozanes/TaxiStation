@@ -5,7 +5,7 @@ from entities.taxi import taxi_status
 
 
 def distance(x1,y1,x2,y2):
-    d2 = ((x1 - x2) ** 2) + ((y1 - y2) ** 2)
+    d2 = ((x2 - x1) ** 2) + ((y2 - y1) ** 2)
     return math.sqrt(d2)
 
 def new_order(index):

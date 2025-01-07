@@ -12,8 +12,6 @@ fps = 24 # ticks per second
 velocity = 250 # meters per second
 order_frequency = 10 # How many seconds for new order
 
-st.set_page_config(page_title="Taxi station", layout="wide")
-
 # Function to update the plot
 def update_plot(taxis, orders, plot_container, color_scale):
     taxi_x = [taxi.current_x for taxi in taxis]
@@ -39,10 +37,9 @@ def update_plot(taxis, orders, plot_container, color_scale):
         width=600,
         height=600
     )
-
-    # Update the scatter plot in the placeholder
     plot_container.altair_chart(chart, use_container_width=True)
 
+st.set_page_config(page_title="Taxi station", layout="wide")
 plot_container = st.empty()
 color=alt.Color('series:N', scale=alt.Scale(domain=['Taxis', 'Pending orders', 'Destinations'], range=['#1f77b4', '#ff7f0e', '#2ca02c']))
 print_container = st.container(height = 300, border=True)
