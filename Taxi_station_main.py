@@ -53,6 +53,7 @@ for i in range(10):
 order_index = 0
 current_orders = []
 new_order_counter = 0
+raise_fps_counter = 0
 try:
     while True:
         tick = Tick(fps)
@@ -110,6 +111,20 @@ try:
             velocity_per_tick = velocity / fps
             for i in range(len(all_taxis)):
                 all_taxis[i].velocity = velocity_per_tick
+        else:
+            raise_fps_counter += 1
+
+        # Raise fps if needed
+        if raise_fps_counter == 10 and fps<=30:
+            raise_fps_counter = 0
+            print(f"Frame rate is stable. Raising fps to {fps + 1}")
+            fps += 1
+            new_order_reset = fps * order_frequency
+            velocity_per_tick = velocity / fps
+            for i in range(len(all_taxis)):
+                all_taxis[i].velocity = velocity_per_tick
+
+
 
 except KeyboardInterrupt:
     print ("Thank you for using Dor's taxi service")
